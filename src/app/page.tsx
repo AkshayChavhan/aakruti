@@ -2,7 +2,9 @@
 
 import { FC, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { BackgroundMusic } from '../../components/BackgroundMusic';
+// import { BackgroundMusic } from '../../components/BackgroundMusic';
+import AnimatedHeart from '../../components/ui/AnimatedHeart';
+import FloralDivider from '../../components/ui/FloralDivider';
 
 const WeddingCountdown: FC = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -90,6 +92,34 @@ const ImageCarousel: FC = () => {
     },
     {
       image: "/slides/slide6.jpeg",
+      alt: "Wedding decoration"
+    },
+    {
+      image: "/slides/slide7.jpeg",
+      alt: "Wedding rings"
+    },
+    {
+      image: "/slides/slide8.jpeg", 
+      alt: "Wedding flowers"
+    },
+    {
+      image: "/slides/slide9.jpeg",
+      alt: "Wedding decoration"
+    },
+    {
+      image: "/slides/slide10.jpeg",
+      alt: "Wedding decoration"
+    },
+    {
+      image: "/slides/slide11.jpeg",
+      alt: "Wedding decoration"
+    },
+    {
+      image: "/slides/slide12.jpeg",
+      alt: "Wedding decoration"
+    },
+    {
+      image: "/slides/slide13.jpeg",
       alt: "Wedding decoration"
     }
   ];
@@ -199,86 +229,44 @@ const WeddingInvitationPage: FC = () => {
 
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-32 pb-24 px-4 sm:pt-40 sm:pb-32">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="absolute inset-0 bg-gradient-to-r from-pink-100/50 to-amber-100/50"
-        ></motion.div>
-        <div className="relative container mx-auto text-center">
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="mb-24 mt-8"
-          >
-            <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="script-font text-4xl sm:text-6xl lg:text-7xl text-pink-600 mb-8"
-            >
-              <motion.span
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-              >
-                Akshay
-              </motion.span>
-              <motion.span
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.7 }}
-                className="inline-block mx-4 align-middle text-3xl"
-              >
-                ❤️
-              </motion.span>
-              <motion.span
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.9 }}
-              >
-                Krutika
-              </motion.span>
-            </motion.h1>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.3 }}
-              className="elegant-font text-lg sm:text-xl text-gray-700 mb-8"
-            >
-              Together with our families, we invite you to celebrate our union
-            </motion.p>
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.5 }}
-              className="golden-text elegant-font text-2xl sm:text-3xl font-bold mb-12"
-            >
-              Save the Date
-            </motion.div>
-
-            {/* Countdown Timer */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.7 }}
-              className="mb-16"
-            >
-              <motion.h3
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.8, delay: 1.9 }}
-                className="text-xl text-gray-700 mb-6"
-              >
-                Counting down to our special day
-              </motion.h3>
-              <WeddingCountdown />
-            </motion.div>
-
-            {/* Image Carousel */}
-            <ImageCarousel />
-          </motion.div>
+        {/* Bokeh overlay */}
+        <div className="absolute inset-0 pointer-events-none z-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-pink-100/60 to-amber-100/60" />
+          {[...Array(30)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute rounded-full bg-pink-200/30 blur-2xl"
+              style={{
+                width: `${30 + Math.random() * 60}px`,
+                height: `${30 + Math.random() * 60}px`,
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                opacity: 0.5 + Math.random() * 0.3,
+              }}
+            />
+          ))}
+        </div>
+        <div className="relative container mx-auto text-center z-10">
+          <div className="flex flex-col items-center justify-center mb-12">
+            {/* Couple photo */}
+            <img src="/slides/slide1.jpeg" alt="Couple" className="w-40 h-40 rounded-full border-4 border-pink-200 shadow-xl object-cover mb-6" />
+            <h1 className="script-font text-4xl sm:text-6xl lg:text-7xl text-pink-600 flex items-center justify-center mb-8">
+              <span>Akshay</span>
+              <AnimatedHeart />
+              <span>Krutika</span>
+            </h1>
+          </div>
+          <p className="elegant-font text-lg sm:text-xl text-gray-700 mb-8">Together with our families, we invite you to celebrate our union</p>
+          <div className="golden-text elegant-font text-2xl sm:text-3xl font-bold mb-12">Save the Date</div>
+          {/* Countdown Timer */}
+          <div className="mb-4">
+            <h3 className="text-xl text-gray-700 mb-6">Counting down to our special day</h3>
+            <WeddingCountdown />
+            <div className="text-pink-500 font-semibold mt-2">We can't wait to celebrate with you!</div>
+          </div>
+          <FloralDivider />
+          {/* Image Carousel */}
+          <ImageCarousel />
         </div>
       </section>
 
@@ -432,9 +420,13 @@ const WeddingInvitationPage: FC = () => {
                       repeat: Infinity,
                       ease: "easeInOut"
                     }}
-                    className="absolute inset-0 rounded-full bg-gradient-to-br from-pink-200 to-rose-300 flex items-center justify-center text-6xl"
+                    className="absolute inset-0 rounded-full overflow-hidden"
                   >
-                    👰‍♀️
+                    <img
+                      src="/slides/bride.jpeg"
+                      alt="Bride"
+                      className="w-full h-full object-cover"
+                    />
                   </motion.div>
                   <motion.div 
                     animate={{ 
@@ -520,9 +512,15 @@ const WeddingInvitationPage: FC = () => {
                       repeat: Infinity,
                       ease: "easeInOut"
                     }}
-                    className="absolute inset-0 rounded-full bg-gradient-to-br from-amber-200 to-yellow-300 flex items-center justify-center text-6xl"
+                    className="absolute inset-0 rounded-full bg-gradient-to-br from-amber-200 to-yellow-300 flex items-center justify-center overflow-hidden"
                   >
-                    🤵‍♂️
+                    <img
+                      src="/slides/groom.jpeg"
+                      alt="Groom"
+                      width={256}
+                      height={256}
+                      className="w-full h-full object-cover"
+                    />
                   </motion.div>
                   <motion.div 
                     animate={{ 
@@ -713,6 +711,8 @@ const WeddingInvitationPage: FC = () => {
           >
             #akshay_krutika_Wedding2025 ❤️
           </motion.div>
+          <FloralDivider />
+          <div className="text-center text-pink-200 mt-4">Made with love by Akshay & Krutika</div>
         </div>
       </motion.footer>
       {/* <BackgroundMusic /> */}
