@@ -28,12 +28,12 @@ const playfairDisplay = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Aakruti & Partner - Wedding Invitation",
+  title: "Akshay & Krutika - Wedding Invitation",
   description: "Join us in celebrating the union of two hearts, two families, and two beautiful journeys becoming one. Save the date for our special day!",
   keywords: ["wedding invitation", "marriage ceremony", "celebration", "love", "union", "family"],
-  authors: [{ name: "Wedding Couple" }],
-  creator: "Aakruti Wedding",
-  publisher: "Wedding Family",
+  authors: [{ name: "Akshay Chavhan" }],
+  creator: "Akshay Chavhan",
+  publisher: "Akshay Chavhan",
   formatDetection: {
     email: false,
     address: false,
