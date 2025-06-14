@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import AnimatedHeart from '../../components/ui/AnimatedHeart';
 import FloralDivider from '../../components/ui/FloralDivider';
 import Image from 'next/image';
+import FloatingDecorations from '../../components/ui/FloatingDecorations';
 
 
 const WeddingCountdown: FC = () => {
@@ -205,32 +206,7 @@ const WeddingInvitationPage: FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 via-rose-50 to-amber-50">
       {/* Decorative Elements */}
-      <motion.div
-        className="fixed inset-0 pointer-events-none"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      >
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-2 h-2 rounded-full bg-pink-300/30"
-            initial={{
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
-            }}
-            animate={{
-              y: [0, -20, 0],
-              opacity: [0.3, 0.6, 0.3],
-            }}
-            transition={{
-              duration: 3 + Math.random() * 2,
-              repeat: Infinity,
-              delay: Math.random() * 2,
-            }}
-          />
-        ))}
-      </motion.div>
+      <FloatingDecorations />
 
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-32 pb-24 px-4 sm:pt-40 sm:pb-32">
