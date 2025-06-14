@@ -5,6 +5,8 @@ import { motion } from 'framer-motion';
 // import { BackgroundMusic } from '../../components/BackgroundMusic';
 import AnimatedHeart from '../../components/ui/AnimatedHeart';
 import FloralDivider from '../../components/ui/FloralDivider';
+import Image from 'next/image';
+
 
 const WeddingCountdown: FC = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -129,7 +131,7 @@ const ImageCarousel: FC = () => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, []);
+  }, [slides.length]);
 
   return (
     <motion.div 
@@ -152,10 +154,13 @@ const ImageCarousel: FC = () => {
           >
             <div className="relative w-full h-full">
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent z-10" />
-              <img
+              <Image
                 src={slide.image}
                 alt={slide.alt}
+                fill
                 className="w-full h-full object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                priority={index === 0}
               />
             </div>
           </motion.div>
@@ -249,7 +254,14 @@ const WeddingInvitationPage: FC = () => {
         <div className="relative container mx-auto text-center z-10">
           <div className="flex flex-col items-center justify-center mb-12">
             {/* Couple photo */}
-            <img src="/slides/slide1.jpeg" alt="Couple" className="w-40 h-40 rounded-full border-4 border-pink-200 shadow-xl object-cover mb-6" />
+            <Image
+              src="/slides/slide1.jpeg"
+              alt="Couple"
+              width={160}
+              height={160}
+              className="w-40 h-40 rounded-full border-4 border-pink-200 shadow-xl object-cover mb-6"
+              priority
+            />
             <h1 className="script-font text-4xl sm:text-6xl lg:text-7xl text-pink-600 flex items-center justify-center mb-8">
               <span>Akshay</span>
               <AnimatedHeart />
@@ -262,7 +274,7 @@ const WeddingInvitationPage: FC = () => {
           <div className="mb-4">
             <h3 className="text-xl text-gray-700 mb-6">Counting down to our special day</h3>
             <WeddingCountdown />
-            <div className="text-pink-500 font-semibold mt-2">We can't wait to celebrate with you!</div>
+            <div className="text-pink-500 font-semibold mt-2">We can&apos;t wait to celebrate with you!</div>
           </div>
           <FloralDivider />
           {/* Image Carousel */}
@@ -422,10 +434,13 @@ const WeddingInvitationPage: FC = () => {
                     }}
                     className="absolute inset-0 rounded-full overflow-hidden"
                   >
-                    <img
+                    <Image
                       src="/slides/bride.jpeg"
                       alt="Bride"
-                      className="w-full h-full object-cover"
+                      fill
+                      className="w-full h-full object-cover rounded-full"
+                      sizes="(max-width: 768px) 100vw, 256px"
+                      priority
                     />
                   </motion.div>
                   <motion.div 
@@ -514,12 +529,13 @@ const WeddingInvitationPage: FC = () => {
                     }}
                     className="absolute inset-0 rounded-full bg-gradient-to-br from-amber-200 to-yellow-300 flex items-center justify-center overflow-hidden"
                   >
-                    <img
+                    <Image
                       src="/slides/groom.jpeg"
                       alt="Groom"
-                      width={256}
-                      height={256}
-                      className="w-full h-full object-cover"
+                      fill
+                      className="w-full h-full object-cover rounded-full"
+                      sizes="(max-width: 768px) 100vw, 256px"
+                      priority
                     />
                   </motion.div>
                   <motion.div 
