@@ -464,7 +464,7 @@ const WeddingInvitationPage: FC = () => {
                 viewport={{ once: true }}
                 className="text-gray-700 mb-4"
               >
-                Daughter of Mr. & Mrs. Vasantrao&apos;s Rathod
+                Daughter of Mr.Vasantrao&apos;s & Mrs.Jyoti&apos;s Rathod
               </motion.p>
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
@@ -550,7 +550,7 @@ const WeddingInvitationPage: FC = () => {
                 viewport={{ once: true }}
                 className="script-font text-2xl sm:text-3xl text-amber-600 mb-4"
               >
-                Akshay&apos;s
+                Akshay
               </motion.h3>
               <motion.p 
                 initial={{ opacity: 0, y: 20 }}
@@ -559,7 +559,7 @@ const WeddingInvitationPage: FC = () => {
                 viewport={{ once: true }}
                 className="text-gray-700 mb-4"
               >
-                Son of Mr. & Mrs. Gopilal&apos;s and Grandson of Namdev&apos;s Chavhan
+                Son of Mr.Gopilal&apos;s & Mrs.Pramila&apos;s Chavhan
               </motion.p>
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
@@ -602,22 +602,7 @@ const WeddingInvitationPage: FC = () => {
               {/* Card content */}
               <div className="relative z-20 flex flex-col items-center">
                 <h4 className="font-semibold text-gray-800">11:00 AM - Ceremony</h4>
-                <p className="text-gray-600">Exchange of vows and rings</p>
-              </div>
-            </motion.div>
-            
-            {/* Camera/Photography */}
-            <motion.div 
-              whileHover={{ scale: 1.02, x: 10, rotate: -1 }}
-              className="relative flex flex-col items-center justify-center p-6 rounded-lg overflow-hidden bg-gradient-to-r from-amber-100 to-yellow-100 min-h-[120px] w-full text-center"
-              style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80)', backgroundSize: 'cover', backgroundPosition: 'center' }}
-            >
-              {/* Fade overlay */}
-              <div className="absolute inset-0 pointer-events-none" style={{background: 'linear-gradient(to right, rgba(255,255,255,0.8) 80%, rgba(255,255,255,0.95) 100%)', zIndex: 10}} />
-              {/* Card content */}
-              <div className="relative z-20 flex flex-col items-center">
-                <h4 className="font-semibold text-gray-800">1:30 PM - Photography</h4>
-                <p className="text-gray-600">Family and couple portraits</p>
+                <p className="text-gray-600">Exchange of vows</p>
               </div>
             </motion.div>
             
@@ -633,6 +618,21 @@ const WeddingInvitationPage: FC = () => {
               <div className="relative z-20 flex flex-col items-center">
                 <h4 className="font-semibold text-gray-800">1:00 PM - Reception</h4>
                 <p className="text-gray-600">Dinner and celebration</p>
+              </div>
+            </motion.div>
+
+            {/* Camera/Photography */}
+            <motion.div 
+              whileHover={{ scale: 1.02, x: 10, rotate: -1 }}
+              className="relative flex flex-col items-center justify-center p-6 rounded-lg overflow-hidden bg-gradient-to-r from-amber-100 to-yellow-100 min-h-[120px] w-full text-center"
+              style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80)', backgroundSize: 'cover', backgroundPosition: 'center' }}
+            >
+              {/* Fade overlay */}
+              <div className="absolute inset-0 pointer-events-none" style={{background: 'linear-gradient(to right, rgba(255,255,255,0.8) 80%, rgba(255,255,255,0.95) 100%)', zIndex: 10}} />
+              {/* Card content */}
+              <div className="relative z-20 flex flex-col items-center">
+                <h4 className="font-semibold text-gray-800">1:30 PM - Photography</h4>
+                <p className="text-gray-600">Family and couple portraits</p>
               </div>
             </motion.div>
           </div>
@@ -666,8 +666,7 @@ const WeddingInvitationPage: FC = () => {
               viewport={{ once: true }}
               className="text-gray-700 mb-6 text-lg"
             >
-              Your presence would make our special day even more meaningful. 
-              Please let us know if you&apos;ll be able to celebrate with us.
+              Your presence would make our special day even more meaningful.
             </motion.p>
           </motion.div>
         </div>
