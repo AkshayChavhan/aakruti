@@ -202,6 +202,74 @@ const ImageCarousel: FC = () => {
   );
 };
 
+const VideoGallery: FC = () => {
+  const videos = [
+    {
+      src: "https://drive.google.com/file/d/1VdFjToNhp1HUkzHZP5oy5UQ5xrAOzbyF/preview",
+      type: "drive",
+      title: "Our Love Story"
+    }
+  ];
+
+  const getVideoEmbed = (src: string, type: string) => {
+    if (type === 'youtube' || type === 'drive') {
+      return (
+        <iframe
+          className="w-full h-64"
+          src={src}
+          title="Video"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
+      );
+    }
+    // For direct video URLs (mp4, etc.)
+    return (
+      <video
+        controls
+        className="w-full h-64 object-cover"
+        preload="metadata"
+      >
+        <source src={src} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    );
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      className="relative w-full max-w-6xl mx-auto mb-24"
+    >
+      <h2 className="script-font text-3xl sm:text-4xl text-center text-pink-600 mb-12">
+        Our Journey Together
+      </h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {videos.map((video, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            viewport={{ once: true }}
+            whileHover={{ scale: 1.05 }}
+            className="relative overflow-hidden rounded-xl shadow-lg bg-white/80 backdrop-blur-sm"
+          >
+            {getVideoEmbed(video.src, video.type)}
+            <div className="p-4 text-center">
+              <h3 className="elegant-font text-lg font-semibold text-gray-800">
+                {video.title}
+              </h3>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </motion.div>
+  );
+};
+
 const WeddingInvitationPage: FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 via-rose-50 to-amber-50">
@@ -638,7 +706,10 @@ const WeddingInvitationPage: FC = () => {
           </div>
         </div>
       </section>
-
+      <section className="py-24 px-4 bg-gradient-to-br from-pink-100 via-rose-100 to-amber-100">
+          {/* Video Gallery */}
+          <VideoGallery />
+          </section>
       {/* RSVP Section */}
       <section className="py-24 px-4 bg-gradient-to-br from-pink-100 via-rose-100 to-amber-100">
         <div className="container mx-auto max-w-2xl text-center">
