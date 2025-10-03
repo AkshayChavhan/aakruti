@@ -45,7 +45,7 @@ const WeddingCountdown: FC = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
-      className="grid grid-cols-4 gap-4 max-w-2xl mx-auto mb-8"
+      className="grid grid-cols-4 gap-4 mx-auto mb-8"
     >
       {Object.entries(timeLeft).map(([unit, value]) => (
         <motion.div
@@ -139,9 +139,9 @@ const ImageCarousel: FC = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
-      className="relative w-full max-w-4xl mx-auto mb-24 overflow-hidden rounded-2xl shadow-xl"
+      className="relative w-full mx-auto mb-24 overflow-hidden rounded-2xl shadow-xl self-center"
     >
-      <div className="relative h-[400px]">
+      <div className="relative h-[400px] self-center">
         {slides.map((slide, index) => (
           <motion.div
             key={index}
@@ -204,10 +204,20 @@ const ImageCarousel: FC = () => {
 
 const VideoGallery: FC = () => {
   const videos = [
+    // {
+    //   src: "https://drive.google.com/file/d/1VdFjToNhp1HUkzHZP5oy5UQ5xrAOzbyF/preview",
+    //   type: "drive",
+    //   title: "Our Love Story"
+    // },
     {
-      src: "https://drive.google.com/file/d/1VdFjToNhp1HUkzHZP5oy5UQ5xrAOzbyF/preview",
+      src: "https://drive.google.com/file/d/1yOxfirX-U6mvt6aPHAOCqmLrEAHkvK4K/preview",
       type: "drive",
-      title: "Our Love Story"
+      title: ""
+    },
+    {
+      src: "https://drive.google.com/file/d/1zMUVDy5ktHpv_RoTqdjvunfg3RXqu10u/preview",
+      type: "drive",
+      title: ""
     }
   ];
 
@@ -241,7 +251,7 @@ const VideoGallery: FC = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
-      className="relative w-full max-w-6xl mx-auto mb-24"
+      className="relative w-full max-w-6xl mb-24 container mx-auto"
     >
       <h2 className="script-font text-3xl sm:text-4xl text-center text-pink-600 mb-12">
         Our Journey Together
@@ -315,7 +325,7 @@ const WeddingInvitationPage: FC = () => {
           <p className="elegant-font text-lg sm:text-xl text-gray-700 mb-8">Together with our families, we invite you to celebrate our union</p>
           <div className="golden-text elegant-font text-2xl sm:text-3xl font-bold mb-12">Save the Date</div>
           {/* Countdown Timer */}
-          <div className="mb-4">
+          <div className="mb-4 self-center">
             <h3 className="text-xl text-gray-700 mb-6">Counting down to our special day</h3>
             <WeddingCountdown />
             <div className="text-pink-500 font-semibold mt-2">We can&apos;t wait to celebrate with you!</div>
@@ -647,7 +657,7 @@ const WeddingInvitationPage: FC = () => {
 
       {/* Wedding Timeline */}
       <section className="py-24 px-4 bg-white/90">
-        <div className="container mx-auto max-w-3xl">
+        <div className="container mx-auto">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
