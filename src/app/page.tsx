@@ -205,24 +205,21 @@ const ImageCarousel: FC = () => {
 
 const VideoGallery: FC = () => {
   const videos = [
-    // {
-    //   src: "https://drive.google.com/file/d/1VdFjToNhp1HUkzHZP5oy5UQ5xrAOzbyF/preview",
-    //   type: "drive",
-    //   title: "Our Love Story"
-    // },
     {
-      src: "https://drive.google.com/file/d/1yOxfirX-U6mvt6aPHAOCqmLrEAHkvK4K/preview",
-      type: "drive",
-      title: ""
-    },
-    {
-      src: "https://drive.google.com/file/d/1zMUVDy5ktHpv_RoTqdjvunfg3RXqu10u/preview",
-      type: "drive",
-      title: ""
+      src: "/videos/VID-20251014-WA0029.mp4",
+      type: "local",
+      title: "Our Love Story",
+      thumbnail: "/slides/slide1.jpeg"
     }
   ];
 
-  const getVideoEmbed = (src: string, type: string) => {
+  const [loadedVideos, setLoadedVideos] = useState<Set<number>>(new Set());
+
+  const handleVideoLoad = (index: number) => {
+    setLoadedVideos(prev => new Set(prev).add(index));
+  };
+
+  const getVideoEmbed = (src: string, type: string, thumbnail?: string) => {
     if (type === 'youtube' || type === 'drive') {
       return (
         <iframe
@@ -234,16 +231,20 @@ const VideoGallery: FC = () => {
         />
       );
     }
-    // For direct video URLs (mp4, etc.)
+    // For local video files
     return (
-      <video
-        controls
-        className="w-full h-64 object-cover"
-        preload="metadata"
-      >
-        <source src={src} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      <div className="relative w-full h-64">
+        <video
+          controls
+          className="w-full h-full object-cover rounded-t-xl"
+          preload="metadata"
+          poster={thumbnail}
+          onLoadedData={() => handleVideoLoad(videos.findIndex(v => v.src === src))}
+        >
+          <source src={src} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
     );
   };
 
@@ -257,7 +258,7 @@ const VideoGallery: FC = () => {
       <h2 className="script-font text-3xl sm:text-4xl text-center text-pink-600 mb-12">
         Our Journey Together
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {videos.map((video, index) => (
           <motion.div
             key={index}
@@ -265,10 +266,18 @@ const VideoGallery: FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
             viewport={{ once: true }}
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.02 }}
             className="relative overflow-hidden rounded-xl shadow-lg bg-white/80 backdrop-blur-sm"
           >
-            {getVideoEmbed(video.src, video.type)}
+            {getVideoEmbed(video.src, video.type, video.thumbnail)}
+            {!loadedVideos.has(index) && video.type === 'local' && (
+              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-pink-100 to-rose-100 rounded-xl">
+                <div className="text-center">
+                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-pink-600 mx-auto mb-2"></div>
+                  <p className="text-sm text-gray-600">Loading video...</p>
+                </div>
+              </div>
+            )}
             <div className="p-4 text-center">
               <h3 className="elegant-font text-lg font-semibold text-gray-800">
                 {video.title}
