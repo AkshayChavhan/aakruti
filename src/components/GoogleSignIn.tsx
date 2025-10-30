@@ -2,6 +2,7 @@
 
 import { signIn, signOut, useSession } from 'next-auth/react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 export default function GoogleSignIn() {
   const { data: session, status } = useSession();
@@ -30,9 +31,11 @@ export default function GoogleSignIn() {
       >
         <div className="flex items-center space-x-4">
           {session.user?.image && (
-            <img
+            <Image
               src={session.user.image}
               alt={session.user.name || 'User'}
+              width={40}
+              height={40}
               className="w-10 h-10 rounded-full border-2 border-pink-400"
             />
           )}
