@@ -4,6 +4,7 @@ import { useSession, signIn } from 'next-auth/react';
 import { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 
 interface UploadedPhoto {
   id: string;
@@ -208,9 +209,11 @@ export default function PhotoUpload() {
                 transition={{ delay: index * 0.1 }}
                 className="relative group overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
               >
-                <img
+                <Image
                   src={photo.fileUrl}
                   alt={photo.fileName}
+                  width={400}
+                  height={300}
                   className="w-full h-48 object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
