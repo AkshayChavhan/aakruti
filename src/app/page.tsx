@@ -206,9 +206,24 @@ const ImageCarousel: FC = () => {
 const VideoGallery: FC = () => {
   const videos = [
     {
-      src: "/videos/VID-20251014-WA0029.mp4",
-      type: "local",
-      title: "Our Love Story",
+      src: "https://drive.google.com/file/d/1yOxfirX-U6mvt6aPHAOCqmLrEAHkvK4K/preview",
+      type: "drive",
+      title: ""
+    },
+    {
+      src: "https://drive.google.com/file/d/1zMUVDy5ktHpv_RoTqdjvunfg3RXqu10u/preview",
+      type: "drive",
+      title: ""
+    },
+    {
+      src: "https://drive.google.com/file/d/1p943rIhC-3pvl44YuCtEaPPlB18ynO_Z/preview",
+      type: "drive",
+      title: ""
+    },
+    {
+      src: "https://drive.google.com/file/d/1SJNJ9-op10qhl8ynK83f0L3xM68PLs-V/preview",
+      type: "drive",
+      title: "",
       thumbnail: "/slides/slide1.jpeg"
     }
   ];
@@ -236,10 +251,13 @@ const VideoGallery: FC = () => {
       <div className="relative w-full h-64">
         <video
           controls
+          controlsList="nodownload"
+          disablePictureInPicture
           className="w-full h-full object-cover rounded-t-xl"
           preload="metadata"
           poster={thumbnail}
           onLoadedData={() => handleVideoLoad(videos.findIndex(v => v.src === src))}
+          onContextMenu={(e) => e.preventDefault()}
         >
           <source src={src} type="video/mp4" />
           Your browser does not support the video tag.
