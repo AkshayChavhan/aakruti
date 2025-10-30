@@ -8,6 +8,7 @@ import FloralDivider from '../../components/ui/FloralDivider';
 import Image from 'next/image';
 import FloatingDecorations from '../../components/ui/FloatingDecorations';
 import GoogleSignIn from '@/components/GoogleSignIn';
+import PhotoUpload from '@/components/PhotoUpload';
 
 
 const WeddingCountdown: FC = () => {
@@ -751,10 +752,37 @@ const WeddingInvitationPage: FC = () => {
           {/* Video Gallery */}
           <VideoGallery />
           </section>
+      {/* Photo Upload Section */}
+      <section className="py-24 px-4 bg-white/90">
+        <div className="container mx-auto max-w-4xl flex flex-col items-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="script-font text-3xl sm:text-4xl text-center text-pink-600 mb-6"
+          >
+            Share Your Memories
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="text-center text-gray-600 mb-12 max-w-2xl"
+          >
+            Capture and share the beautiful moments from our special day. Your photos will help us cherish these memories forever!
+          </motion.p>
+          <div className="w-full">
+            <PhotoUpload />
+          </div>
+        </div>
+      </section>
+
       {/* RSVP Section */}
       <section className="py-24 px-4 bg-gradient-to-br from-pink-100 via-rose-100 to-amber-100">
         <div className="container mx-auto max-w-2xl text-center">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -763,15 +791,15 @@ const WeddingInvitationPage: FC = () => {
           >
             Please Join Us
           </motion.h2>
-          
-          <motion.div 
+
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
             className="bg-white/90 p-8 rounded-lg shadow-lg mb-24"
           >
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
