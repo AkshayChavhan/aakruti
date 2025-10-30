@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Dancing_Script, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import Providers from "@/components/Providers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -101,11 +102,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${dancingScript.variable} ${playfairDisplay.variable} antialiased min-h-screen bg-background text-foreground`}
       >
-        <div className="relative flex min-h-screen flex-col">
-          <div className="flex-1">
-            {children}
+        <Providers>
+          <div className="relative flex min-h-screen flex-col">
+            <div className="flex-1">
+              {children}
+            </div>
           </div>
-        </div>
+        </Providers>
       </body>
     </html>
   );

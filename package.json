@@ -3,14 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 5001",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 5001",
     "lint": "next lint"
   },
   "dependencies": {
+    "@auth/prisma-adapter": "^2.11.1",
+    "@prisma/client": "^6.18.0",
+    "dotenv": "^17.2.3",
     "framer-motion": "^12.18.1",
     "next": "15.3.3",
+    "next-auth": "^5.0.0-beta.30",
+    "prisma": "^6.18.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },

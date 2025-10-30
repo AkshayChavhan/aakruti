@@ -7,6 +7,7 @@ import AnimatedHeart from '../../components/ui/AnimatedHeart';
 import FloralDivider from '../../components/ui/FloralDivider';
 import Image from 'next/image';
 import FloatingDecorations from '../../components/ui/FloatingDecorations';
+import GoogleSignIn from '@/components/GoogleSignIn';
 
 
 const WeddingCountdown: FC = () => {
@@ -283,6 +284,9 @@ const VideoGallery: FC = () => {
 const WeddingInvitationPage: FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-50 via-rose-50 to-amber-50">
+      {/* Google Sign In */}
+      <GoogleSignIn />
+
       {/* Decorative Elements */}
       <FloatingDecorations />
 
